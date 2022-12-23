@@ -41,7 +41,7 @@ Github actions の機能を使い、ソルバの自動ビルド、インスト�
 
 * private: developer版にも公開版にも登録されません。もし過去に登録していた場合、削除されます。
 * develop: developer版にのみ登録されます。
-* public: developer版と後悔版両方に登録されます。
+* public: developer版と公開版両方に登録されます。
 
 ### build
 
