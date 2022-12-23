@@ -31,6 +31,10 @@
     
     ! open cgns file
     call cg_iric_open(cgnsfile, IRIC_MODE_MODIFY, fid, ier)
+    call cg_iric_clear_sol(fid, ier)
+    call iric_initoption(IRIC_OPTION_CANCEL, ier)
+    call iric_initoption(IRIC_OPTION_DIVIDESOLUTIONS, ier)
+    
     
     ! set default
     call set_default()

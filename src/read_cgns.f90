@@ -49,15 +49,26 @@ subroutine read_cgns(fid)
     do n = 1, count
         
         call cg_iric_read_bc_indicessize(fid, "inflow", n, size, ier)
+        
+        !indices = point or cell
+        ! i,j for a point or a cell
         allocate(indices(size*2))
         call cg_iric_read_bc_indices(fid, "inflow", n, indices, ier)
+        
+        
+        ! position = edge
         esize = size / 2
         allocate(edges(2, esize))
         do m = 1, esize
             ii = 4 * (m - 1) + 1 ; jj = ii + 1
             edges(1, m) = indices(ii)    !i-index
             edges(2, m) = indices(jj)    !j-index
+            
+            write(*,*) edges(1, m), edges(2, m)
         end do
+        
+        
+        
         
         !read discharge function the bc id =n
         call cg_iric_read_bc_functionalsize(fid, "inflow", n, "discharge", nsize, ier)    
